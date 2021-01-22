@@ -20,6 +20,8 @@ def raspi_import(path, channels=5):
 # Import data from bin file
 sample_period, data = raspi_import('adcData.bin')
 
+print(data)
+
 #data = signal.detrend(data, axis=0)  # removes DC component for each channel
 sample_period *= 1e-6  # change unit to micro seconds
 
