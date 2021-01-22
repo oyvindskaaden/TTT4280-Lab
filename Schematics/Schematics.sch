@@ -1,5 +1,5 @@
 EESchema Schematic File Version 4
-EELAYER 26 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -14,104 +14,402 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L power:+5V #PWR01
-U 1 1 580C1B61
-P 3100 950
-F 0 "#PWR01" H 3100 800 50  0001 C CNN
-F 1 "+5V" H 3100 1090 50  0000 C CNN
-F 2 "" H 3100 950 50  0000 C CNN
-F 3 "" H 3100 950 50  0000 C CNN
-	1    3100 950 
+L Schematics-rescue:Mounting_Hole-Mechanical MK1
+U 1 1 5834FB2E
+P 10400 6150
+F 0 "MK1" H 10500 6196 50  0000 L CNN
+F 1 "M2.5" H 10500 6105 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 10400 6150 60  0001 C CNN
+F 3 "" H 10400 6150 60  0001 C CNN
+	1    10400 6150
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3100 950  3100 1100
-Wire Wire Line
-	3100 1100 2900 1100
-Wire Wire Line
-	3100 1200 2900 1200
-Connection ~ 3100 1100
 $Comp
-L power:GND #PWR02
-U 1 1 580C1D11
-P 3000 3150
-F 0 "#PWR02" H 3000 2900 50  0001 C CNN
-F 1 "GND" H 3000 3000 50  0000 C CNN
-F 2 "" H 3000 3150 50  0000 C CNN
-F 3 "" H 3000 3150 50  0000 C CNN
-	1    3000 3150
+L Schematics-rescue:Mounting_Hole-Mechanical MK3
+U 1 1 5834FBEF
+P 10850 6150
+F 0 "MK3" H 10950 6196 50  0000 L CNN
+F 1 "M2.5" H 10950 6105 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 10850 6150 60  0001 C CNN
+F 3 "" H 10850 6150 60  0001 C CNN
+	1    10850 6150
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3000 1300 3000 1700
-Wire Wire Line
-	3000 2700 2900 2700
-Wire Wire Line
-	3000 2500 2900 2500
-Connection ~ 3000 2700
-Wire Wire Line
-	3000 2000 2900 2000
-Connection ~ 3000 2500
-Wire Wire Line
-	3000 1700 2900 1700
-Connection ~ 3000 2000
 $Comp
-L power:GND #PWR03
-U 1 1 580C1E01
-P 2300 3150
-F 0 "#PWR03" H 2300 2900 50  0001 C CNN
-F 1 "GND" H 2300 3000 50  0000 C CNN
-F 2 "" H 2300 3150 50  0000 C CNN
-F 3 "" H 2300 3150 50  0000 C CNN
-	1    2300 3150
+L Schematics-rescue:Mounting_Hole-Mechanical MK2
+U 1 1 5834FC19
+P 10400 6350
+F 0 "MK2" H 10500 6396 50  0000 L CNN
+F 1 "M2.5" H 10500 6305 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 10400 6350 60  0001 C CNN
+F 3 "" H 10400 6350 60  0001 C CNN
+	1    10400 6350
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2300 3000 2400 3000
-Wire Wire Line
-	2300 1500 2300 2300
-Wire Wire Line
-	2300 2300 2400 2300
-Connection ~ 2300 3000
-Connection ~ 2200 1100
-Wire Wire Line
-	2200 1900 2400 1900
-Wire Wire Line
-	2200 1100 2400 1100
-Wire Wire Line
-	2200 950  2200 1100
 $Comp
-L power:+3.3V #PWR04
-U 1 1 580C1BC1
-P 2200 950
-F 0 "#PWR04" H 2200 800 50  0001 C CNN
-F 1 "+3.3V" H 2200 1090 50  0000 C CNN
-F 2 "" H 2200 950 50  0000 C CNN
-F 3 "" H 2200 950 50  0000 C CNN
-	1    2200 950 
+L Schematics-rescue:Mounting_Hole-Mechanical MK4
+U 1 1 5834FC4F
+P 10850 6350
+F 0 "MK4" H 10950 6396 50  0000 L CNN
+F 1 "M2.5" H 10950 6305 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 10850 6350 60  0001 C CNN
+F 3 "" H 10850 6350 60  0001 C CNN
+	1    10850 6350
+	1    0    0    -1  
+$EndComp
+Text Notes 10400 6000 0    50   ~ 0
+Mounting Holes
+$Comp
+L Analog_ADC:MCP3201 U1
+U 1 1 600E8ACD
+P 2000 4350
+F 0 "U1" H 2300 4000 50  0000 C CNN
+F 1 "MCP3201" H 2200 4100 50  0000 C CNN
+F 2 "" H 2750 4000 50  0001 C CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/21290D.pdf" H 2800 4250 50  0001 C CNN
+	1    2000 4350
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR05
+U 1 1 600F735F
+P 1900 4650
+F 0 "#PWR05" H 1900 4400 50  0001 C CNN
+F 1 "GND" H 1905 4477 50  0000 C CNN
+F 2 "" H 1900 4650 50  0001 C CNN
+F 3 "" H 1900 4650 50  0001 C CNN
+	1    1900 4650
+	1    0    0    -1  
+$EndComp
+Text GLabel 10600 1050 2    50   Input ~ 0
+3V3_Clean
+$Comp
+L power:+3V3 #PWR010
+U 1 1 600FF1FF
+P 8650 1050
+F 0 "#PWR010" H 8650 900 50  0001 C CNN
+F 1 "+3V3" H 8665 1223 50  0000 C CNN
+F 2 "" H 8650 1050 50  0001 C CNN
+F 3 "" H 8650 1050 50  0001 C CNN
+	1    8650 1050
+	1    0    0    -1  
+$EndComp
+$Comp
+L pspice:C C1
+U 1 1 600FF9FF
+P 8850 1300
+F 0 "C1" H 9028 1346 50  0000 L CNN
+F 1 "100u" H 9028 1255 50  0000 L CNN
+F 2 "" H 8850 1300 50  0001 C CNN
+F 3 "~" H 8850 1300 50  0001 C CNN
+	1    8850 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L pspice:C C2
+U 1 1 601002F9
+P 9650 1300
+F 0 "C2" H 9828 1346 50  0000 L CNN
+F 1 "100u" H 9828 1255 50  0000 L CNN
+F 2 "" H 9650 1300 50  0001 C CNN
+F 3 "~" H 9650 1300 50  0001 C CNN
+	1    9650 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP C3
+U 1 1 60100F82
+P 10200 1300
+F 0 "C3" H 10318 1346 50  0000 L CNN
+F 1 "100u" H 10318 1255 50  0000 L CNN
+F 2 "" H 10238 1150 50  0001 C CNN
+F 3 "~" H 10200 1300 50  0001 C CNN
+	1    10200 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:L L1
+U 1 1 60104E20
+P 9250 1050
+F 0 "L1" V 9440 1050 50  0000 C CNN
+F 1 "100m" V 9349 1050 50  0000 C CNN
+F 2 "" H 9250 1050 50  0001 C CNN
+F 3 "~" H 9250 1050 50  0001 C CNN
+	1    9250 1050
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8650 1050 8850 1050
+Wire Wire Line
+	9100 1050 8850 1050
+Connection ~ 8850 1050
+Wire Wire Line
+	9400 1050 9650 1050
+Wire Wire Line
+	9650 1050 10200 1050
+Wire Wire Line
+	10200 1050 10200 1150
+Connection ~ 9650 1050
+Wire Wire Line
+	10200 1050 10600 1050
+Connection ~ 10200 1050
+$Comp
+L power:GND #PWR011
+U 1 1 6010BFF4
+P 8850 1550
+F 0 "#PWR011" H 8850 1300 50  0001 C CNN
+F 1 "GND" H 8855 1377 50  0000 C CNN
+F 2 "" H 8850 1550 50  0001 C CNN
+F 3 "" H 8850 1550 50  0001 C CNN
+	1    8850 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR012
+U 1 1 6010C4E7
+P 9650 1550
+F 0 "#PWR012" H 9650 1300 50  0001 C CNN
+F 1 "GND" H 9655 1377 50  0000 C CNN
+F 2 "" H 9650 1550 50  0001 C CNN
+F 3 "" H 9650 1550 50  0001 C CNN
+	1    9650 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR013
+U 1 1 6010C75D
+P 10200 1550
+F 0 "#PWR013" H 10200 1300 50  0001 C CNN
+F 1 "GND" H 10205 1377 50  0000 C CNN
+F 2 "" H 10200 1550 50  0001 C CNN
+F 3 "" H 10200 1550 50  0001 C CNN
+	1    10200 1550
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2300 1500 2400 1500
-Connection ~ 2300 2300
+	10200 1450 10200 1550
+Wire Notes Line
+	8300 450  8300 1900
+Text Notes 10200 700  2    98   ~ 0
+Pi bridge (DC LP filter)
+Text GLabel 1100 4350 0    50   Input ~ 0
+ADC1
+Text GLabel 2100 3850 0    50   Input ~ 0
+3V3_Clean
+Text GLabel 2100 4950 0    50   Input ~ 0
+3V3_Clean
 Wire Wire Line
-	2400 1200 1250 1200
+	2100 4650 2100 4950
+Text GLabel 1100 4450 0    50   Input ~ 0
+CLK
 Wire Wire Line
-	1250 1300 2400 1300
+	1100 4350 1500 4350
 Wire Wire Line
-	1250 1400 2400 1400
+	1100 4450 1500 4450
+Text GLabel 1100 4250 0    50   Input ~ 0
+CS
 Wire Wire Line
-	2400 1600 1250 1600
+	2100 4050 2100 3850
+$Comp
+L Analog_ADC:MCP3201 U2
+U 1 1 60178005
+P 2000 5550
+F 0 "U2" H 2300 5200 50  0000 C CNN
+F 1 "MCP3201" H 2200 5300 50  0000 C CNN
+F 2 "" H 2750 5200 50  0001 C CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/21290D.pdf" H 2800 5450 50  0001 C CNN
+	1    2000 5550
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR06
+U 1 1 6017800B
+P 1900 5850
+F 0 "#PWR06" H 1900 5600 50  0001 C CNN
+F 1 "GND" H 1905 5677 50  0000 C CNN
+F 2 "" H 1900 5850 50  0001 C CNN
+F 3 "" H 1900 5850 50  0001 C CNN
+	1    1900 5850
+	1    0    0    -1  
+$EndComp
+Text GLabel 1100 5550 0    50   Input ~ 0
+ADC2
+Text GLabel 2100 5050 0    50   Input ~ 0
+3V3_Clean
+Text GLabel 2100 6150 0    50   Input ~ 0
+3V3_Clean
 Wire Wire Line
-	1250 1700 2400 1700
+	2100 5850 2100 6150
+Text GLabel 1100 5650 0    50   Input ~ 0
+CLK
 Wire Wire Line
-	1250 1800 2400 1800
+	1100 5550 1500 5550
 Wire Wire Line
-	2400 2000 1250 2000
+	1100 5650 1500 5650
+Text GLabel 1100 5450 0    50   Input ~ 0
+CS
 Wire Wire Line
-	1250 2100 2400 2100
+	2100 5250 2100 5050
+$Comp
+L Analog_ADC:MCP3201 U3
+U 1 1 6017AC8E
+P 2000 6750
+F 0 "U3" H 2300 6400 50  0000 C CNN
+F 1 "MCP3201" H 2200 6500 50  0000 C CNN
+F 2 "" H 2750 6400 50  0001 C CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/21290D.pdf" H 2800 6650 50  0001 C CNN
+	1    2000 6750
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR07
+U 1 1 6017AC94
+P 1900 7050
+F 0 "#PWR07" H 1900 6800 50  0001 C CNN
+F 1 "GND" H 1905 6877 50  0000 C CNN
+F 2 "" H 1900 7050 50  0001 C CNN
+F 3 "" H 1900 7050 50  0001 C CNN
+	1    1900 7050
+	1    0    0    -1  
+$EndComp
+Text GLabel 1100 6750 0    50   Input ~ 0
+ADC3
+Text GLabel 2100 6250 0    50   Input ~ 0
+3V3_Clean
+Text GLabel 2100 7350 0    50   Input ~ 0
+3V3_Clean
 Wire Wire Line
-	1250 2200 2400 2200
+	2100 7050 2100 7350
+Text GLabel 1100 6850 0    50   Input ~ 0
+CLK
+Wire Wire Line
+	1100 6750 1500 6750
+Wire Wire Line
+	1100 6850 1500 6850
+Text GLabel 1100 6650 0    50   Input ~ 0
+CS
+Wire Wire Line
+	2100 6450 2100 6250
+$Comp
+L Analog_ADC:MCP3201 U4
+U 1 1 6017CDD7
+P 6450 3600
+F 0 "U4" H 6750 3250 50  0000 C CNN
+F 1 "MCP3201" H 6650 3350 50  0000 C CNN
+F 2 "" H 7200 3250 50  0001 C CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/21290D.pdf" H 7250 3500 50  0001 C CNN
+	1    6450 3600
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR08
+U 1 1 6017CDDD
+P 6350 3900
+F 0 "#PWR08" H 6350 3650 50  0001 C CNN
+F 1 "GND" H 6355 3727 50  0000 C CNN
+F 2 "" H 6350 3900 50  0001 C CNN
+F 3 "" H 6350 3900 50  0001 C CNN
+	1    6350 3900
+	1    0    0    -1  
+$EndComp
+Text GLabel 5550 3600 0    50   Input ~ 0
+ADC4
+Text GLabel 6550 3100 0    50   Input ~ 0
+3V3_Clean
+Text GLabel 6550 4200 0    50   Input ~ 0
+3V3_Clean
+Wire Wire Line
+	6550 3900 6550 4200
+Text GLabel 5550 3700 0    50   Input ~ 0
+CLK
+Wire Wire Line
+	5550 3600 5950 3600
+Wire Wire Line
+	5550 3700 5950 3700
+Text GLabel 5550 3500 0    50   Input ~ 0
+CS
+Wire Wire Line
+	6550 3300 6550 3100
+$Comp
+L Analog_ADC:MCP3201 U5
+U 1 1 6017F973
+P 6450 4800
+F 0 "U5" H 6750 4450 50  0000 C CNN
+F 1 "MCP3201" H 6650 4550 50  0000 C CNN
+F 2 "" H 7200 4450 50  0001 C CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/21290D.pdf" H 7250 4700 50  0001 C CNN
+	1    6450 4800
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR09
+U 1 1 6017F979
+P 6350 5100
+F 0 "#PWR09" H 6350 4850 50  0001 C CNN
+F 1 "GND" H 6355 4927 50  0000 C CNN
+F 2 "" H 6350 5100 50  0001 C CNN
+F 3 "" H 6350 5100 50  0001 C CNN
+	1    6350 5100
+	1    0    0    -1  
+$EndComp
+Text GLabel 5550 4800 0    50   Input ~ 0
+ADC5
+Text GLabel 6550 4300 0    50   Input ~ 0
+3V3_Clean
+Text GLabel 6550 5400 0    50   Input ~ 0
+3V3_Clean
+Wire Wire Line
+	6550 5100 6550 5400
+Text GLabel 5550 4900 0    50   Input ~ 0
+CLK
+Wire Wire Line
+	5550 4800 5950 4800
+Wire Wire Line
+	5550 4900 5950 4900
+Text GLabel 5550 4700 0    50   Input ~ 0
+CS
+Wire Wire Line
+	6550 4500 6550 4300
+Wire Wire Line
+	1100 4250 1500 4250
+Wire Wire Line
+	1100 5450 1500 5450
+Wire Wire Line
+	5550 3500 5950 3500
+Wire Wire Line
+	5550 4700 5950 4700
+Wire Notes Line
+	10250 6500 10250 5850
+Wire Notes Line
+	10250 5850 11200 5850
+Wire Wire Line
+	2900 1500 4100 1500
+Wire Wire Line
+	2900 1400 4100 1400
+Text GLabel 4100 1500 2    50   Input ~ 0
+CS
+Text GLabel 4100 1400 2    50   Input ~ 0
+CLK
+Wire Wire Line
+	2900 3000 4100 3000
+Wire Wire Line
+	2900 2900 4100 2900
+Wire Wire Line
+	2900 2800 4100 2800
+Wire Wire Line
+	2900 2600 4100 2600
+Wire Wire Line
+	2900 2300 4100 2300
+Text GLabel 4100 3000 2    50   Input ~ 0
+ADC5
+Text GLabel 4100 2900 2    50   Input ~ 0
+ADC4
+Text GLabel 4100 2800 2    50   Input ~ 0
+ADC3
+Text GLabel 4100 2600 2    50   Input ~ 0
+ADC2
+Text GLabel 4100 2300 2    50   Input ~ 0
+ADC1
 Wire Wire Line
 	2400 2400 1250 2400
 Wire Wire Line
@@ -124,48 +422,6 @@ Wire Wire Line
 	1250 2800 2400 2800
 Wire Wire Line
 	1250 2900 2400 2900
-Wire Wire Line
-	2900 2800 3950 2800
-Wire Wire Line
-	2900 2900 3950 2900
-Wire Wire Line
-	2900 2300 3950 2300
-Wire Wire Line
-	2900 2400 3950 2400
-Wire Wire Line
-	2900 2100 3950 2100
-Wire Wire Line
-	2900 2200 3950 2200
-Wire Wire Line
-	2900 1800 3950 1800
-Wire Wire Line
-	2900 1900 3950 1900
-Wire Wire Line
-	2900 1500 3950 1500
-Wire Wire Line
-	2900 1600 3950 1600
-Wire Wire Line
-	2900 1400 3950 1400
-Wire Wire Line
-	2900 2600 3950 2600
-Text Label 1250 1200 0    50   ~ 0
-GPIO2(SDA1)
-Text Label 1250 1300 0    50   ~ 0
-GPIO3(SCL1)
-Text Label 1250 1400 0    50   ~ 0
-GPIO4(GCLK)
-Text Label 1250 1600 0    50   ~ 0
-GPIO17(GEN0)
-Text Label 1250 1700 0    50   ~ 0
-GPIO27(GEN2)
-Text Label 1250 1800 0    50   ~ 0
-GPIO22(GEN3)
-Text Label 1250 2000 0    50   ~ 0
-GPIO10(SPI0_MOSI)
-Text Label 1250 2100 0    50   ~ 0
-GPIO9(SPI0_MISO)
-Text Label 1250 2200 0    50   ~ 0
-GPIO11(SPI0_SCK)
 Text Label 1250 2400 0    50   ~ 0
 ID_SD
 Text Label 1250 2500 0    50   ~ 0
@@ -178,81 +434,24 @@ Text Label 1250 2800 0    50   ~ 0
 GPIO19(SPI1_MISO)
 Text Label 1250 2900 0    50   ~ 0
 GPIO26
-Text Label 3950 2900 2    50   ~ 0
-GPIO20(SPI1_MOSI)
-Text Label 3950 2800 2    50   ~ 0
-GPIO16
-Text Label 3950 2600 2    50   ~ 0
-GPIO12(PWM0)
-Text Label 3950 2400 2    50   ~ 0
-ID_SC
-Text Label 3950 2300 2    50   ~ 0
-GPIO7(SPI1_CE_N)
-Text Label 3950 2200 2    50   ~ 0
-GPIO8(SPI0_CE_N)
-Text Label 3950 2100 2    50   ~ 0
-GPIO25(GEN6)
-Text Label 3950 1900 2    50   ~ 0
-GPIO24(GEN5)
-Text Label 3950 1800 2    50   ~ 0
-GPIO23(GEN4)
-Text Label 3950 1600 2    50   ~ 0
-GPIO18(GEN1)(PWM0)
-Text Label 3950 1500 2    50   ~ 0
-GPIO15(RXD0)
-Text Label 3950 1400 2    50   ~ 0
-GPIO14(TXD0)
 Wire Wire Line
-	3000 1300 2900 1300
-Connection ~ 3000 1700
-Text Notes 650  7600 0    50   ~ 0
-ID_SD and ID_SC PINS:\nThese pins are reserved for HAT ID EEPROM.\n\nAt boot time this I2C interface will be\ninterrogated to look for an EEPROM\nthat identifes the attached board and\nallows automagic setup of the GPIOs\n(and optionally, Linux drivers).\n\nDO NOT USE these pins for anything other\nthan attaching an I2C ID EEPROM. Leave\nunconnected if ID EEPROM not required.
-$Comp
-L Mechanical:Mounting_Hole MK1
-U 1 1 5834FB2E
-P 3000 7200
-F 0 "MK1" H 3100 7246 50  0000 L CNN
-F 1 "M2.5" H 3100 7155 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 3000 7200 60  0001 C CNN
-F 3 "" H 3000 7200 60  0001 C CNN
-	1    3000 7200
-	1    0    0    -1  
-$EndComp
-$Comp
-L Mechanical:Mounting_Hole MK3
-U 1 1 5834FBEF
-P 3450 7200
-F 0 "MK3" H 3550 7246 50  0000 L CNN
-F 1 "M2.5" H 3550 7155 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 3450 7200 60  0001 C CNN
-F 3 "" H 3450 7200 60  0001 C CNN
-	1    3450 7200
-	1    0    0    -1  
-$EndComp
-$Comp
-L Mechanical:Mounting_Hole MK2
-U 1 1 5834FC19
-P 3000 7400
-F 0 "MK2" H 3100 7446 50  0000 L CNN
-F 1 "M2.5" H 3100 7355 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 3000 7400 60  0001 C CNN
-F 3 "" H 3000 7400 60  0001 C CNN
-	1    3000 7400
-	1    0    0    -1  
-$EndComp
-$Comp
-L Mechanical:Mounting_Hole MK4
-U 1 1 5834FC4F
-P 3450 7400
-F 0 "MK4" H 3550 7446 50  0000 L CNN
-F 1 "M2.5" H 3550 7355 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5" H 3450 7400 60  0001 C CNN
-F 3 "" H 3450 7400 60  0001 C CNN
-	1    3450 7400
-	1    0    0    -1  
-$EndComp
-Text Notes 3000 7050 0    50   ~ 0
-Mounting Holes
+	3000 1700 3000 2000
+Wire Wire Line
+	2300 2300 2300 3000
+Wire Wire Line
+	2200 1100 2200 1900
+Wire Wire Line
+	2300 3000 2300 3150
+Wire Wire Line
+	3000 2000 3000 2500
+Wire Wire Line
+	3000 2500 3000 2700
+Wire Wire Line
+	3000 2700 3000 3150
+Wire Wire Line
+	3100 1100 3100 1200
+Text Label 3950 3000 2    50   ~ 0
+GPIO21(SPI1_SCK)
 $Comp
 L Connector_Generic:Conn_02x20_Odd_Even P1
 U 1 1 59AD464A
@@ -264,24 +463,174 @@ F 3 "" H -2250 1050 50  0001 C CNN
 	1    2600 2000
 	1    0    0    -1  
 $EndComp
+Connection ~ 3000 1700
 Wire Wire Line
-	2900 3000 3950 3000
-Text Label 3950 3000 2    50   ~ 0
-GPIO21(SPI1_SCK)
+	3000 1300 2900 1300
+Text Label 3950 1400 2    50   ~ 0
+GPIO14(TXD0)
+Text Label 3950 1500 2    50   ~ 0
+GPIO15(RXD0)
+Text Label 3950 1600 2    50   ~ 0
+GPIO18(GEN1)(PWM0)
+Text Label 3950 1800 2    50   ~ 0
+GPIO23(GEN4)
+Text Label 3950 1900 2    50   ~ 0
+GPIO24(GEN5)
+Text Label 3950 2100 2    50   ~ 0
+GPIO25(GEN6)
+Text Label 3950 2200 2    50   ~ 0
+GPIO8(SPI0_CE_N)
+Text Label 3950 2300 2    50   ~ 0
+GPIO7(SPI1_CE_N)
+Text Label 3950 2400 2    50   ~ 0
+ID_SC
+Text Label 3950 2600 2    50   ~ 0
+GPIO12(PWM0)
+Text Label 3950 2800 2    50   ~ 0
+GPIO16
+Text Label 3950 2900 2    50   ~ 0
+GPIO20(SPI1_MOSI)
+Text Label 1250 2200 0    50   ~ 0
+GPIO11(SPI0_SCK)
+Text Label 1250 2100 0    50   ~ 0
+GPIO9(SPI0_MISO)
+Text Label 1250 2000 0    50   ~ 0
+GPIO10(SPI0_MOSI)
+Text Label 1250 1800 0    50   ~ 0
+GPIO22(GEN3)
+Text Label 1250 1700 0    50   ~ 0
+GPIO27(GEN2)
+Text Label 1250 1600 0    50   ~ 0
+GPIO17(GEN0)
+Text Label 1250 1400 0    50   ~ 0
+GPIO4(GCLK)
+Text Label 1250 1300 0    50   ~ 0
+GPIO3(SCL1)
+Text Label 1250 1200 0    50   ~ 0
+GPIO2(SDA1)
 Wire Wire Line
-	3100 1100 3100 1200
+	2900 1600 3950 1600
 Wire Wire Line
-	3000 2700 3000 3150
+	2900 1900 3950 1900
 Wire Wire Line
-	3000 2500 3000 2700
+	2900 1800 3950 1800
 Wire Wire Line
-	3000 2000 3000 2500
+	2900 2200 3950 2200
 Wire Wire Line
-	2300 3000 2300 3150
+	2900 2100 3950 2100
 Wire Wire Line
-	2200 1100 2200 1900
+	2900 2400 3950 2400
 Wire Wire Line
-	2300 2300 2300 3000
+	1250 2200 2400 2200
 Wire Wire Line
-	3000 1700 3000 2000
+	1250 2100 2400 2100
+Wire Wire Line
+	2400 2000 1250 2000
+Wire Wire Line
+	1250 1800 2400 1800
+Wire Wire Line
+	1250 1700 2400 1700
+Wire Wire Line
+	2400 1600 1250 1600
+Wire Wire Line
+	1250 1400 2400 1400
+Wire Wire Line
+	1250 1300 2400 1300
+Wire Wire Line
+	2400 1200 1250 1200
+Connection ~ 2300 2300
+Wire Wire Line
+	2300 1500 2400 1500
+$Comp
+L power:+3.3V #PWR04
+U 1 1 580C1BC1
+P 2200 950
+F 0 "#PWR04" H 2200 800 50  0001 C CNN
+F 1 "+3.3V" H 2200 1090 50  0000 C CNN
+F 2 "" H 2200 950 50  0000 C CNN
+F 3 "" H 2200 950 50  0000 C CNN
+	1    2200 950 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2200 950  2200 1100
+Wire Wire Line
+	2200 1100 2400 1100
+Wire Wire Line
+	2200 1900 2400 1900
+Connection ~ 2200 1100
+Connection ~ 2300 3000
+Wire Wire Line
+	2300 2300 2400 2300
+Wire Wire Line
+	2300 1500 2300 2300
+Wire Wire Line
+	2300 3000 2400 3000
+$Comp
+L power:GND #PWR03
+U 1 1 580C1E01
+P 2300 3150
+F 0 "#PWR03" H 2300 2900 50  0001 C CNN
+F 1 "GND" H 2300 3000 50  0000 C CNN
+F 2 "" H 2300 3150 50  0000 C CNN
+F 3 "" H 2300 3150 50  0000 C CNN
+	1    2300 3150
+	1    0    0    -1  
+$EndComp
+Connection ~ 3000 2000
+Wire Wire Line
+	3000 1700 2900 1700
+Connection ~ 3000 2500
+Wire Wire Line
+	3000 2000 2900 2000
+Connection ~ 3000 2700
+Wire Wire Line
+	3000 2500 2900 2500
+Wire Wire Line
+	3000 2700 2900 2700
+Wire Wire Line
+	3000 1300 3000 1700
+$Comp
+L power:GND #PWR02
+U 1 1 580C1D11
+P 3000 3150
+F 0 "#PWR02" H 3000 2900 50  0001 C CNN
+F 1 "GND" H 3000 3000 50  0000 C CNN
+F 2 "" H 3000 3150 50  0000 C CNN
+F 3 "" H 3000 3150 50  0000 C CNN
+	1    3000 3150
+	1    0    0    -1  
+$EndComp
+Connection ~ 3100 1100
+Wire Wire Line
+	3100 1200 2900 1200
+Wire Wire Line
+	3100 1100 2900 1100
+Wire Wire Line
+	3100 950  3100 1100
+$Comp
+L power:+5V #PWR01
+U 1 1 580C1B61
+P 3100 950
+F 0 "#PWR01" H 3100 800 50  0001 C CNN
+F 1 "+5V" H 3100 1090 50  0000 C CNN
+F 2 "" H 3100 950 50  0000 C CNN
+F 3 "" H 3100 950 50  0000 C CNN
+	1    3100 950 
+	1    0    0    -1  
+$EndComp
+Wire Notes Line
+	4500 3400 4500 450 
+Text Notes 550  700  0    118  ~ 0
+40 Pin rPi
+Wire Notes Line
+	5100 3400 5100 7750
+Wire Notes Line
+	550  3400 5100 3400
+Text Notes 550  3650 0    118  ~ 0
+Lab 2 Mikrofoner
+Wire Notes Line
+	4500 1900 11250 1900
+Text Notes 4750 2100 0    118  ~ 0
+Lab 3 Doppler
 $EndSCHEMATC
