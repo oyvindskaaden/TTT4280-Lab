@@ -18,12 +18,15 @@ def raspi_import(path, channels=5):
 
 
 # Import data from bin file
-sample_period, data = raspi_import('adcData.bin')
+sample_period, data = raspi_import('./adcData.bin')
 
-print(data)
+print(sample_period)
+
+data
 
 #data = signal.detrend(data, axis=0)  # removes DC component for each channel
 sample_period *= 1e-6  # change unit to micro seconds
+data = data / 1000 # Change to volts from mV
 
 # Generate time axis
 num_of_samples = data.shape[0]  # returns shape of matrix
