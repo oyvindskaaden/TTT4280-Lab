@@ -3,11 +3,20 @@ import math as m
 
 soundVelocity = 343
 
-mic1 = [0, 1]
-mic2 = [-m.sqrt(3)/2, -0.5]
-mic3 = [m.sqrt(3)/2, -0.5]
+a = 0.035
 
-tau = 1e-3*np.array([0.386367 , -0.087589 , -0.473957])
+mic1 = np.array([0, 1]) * a
+mic2 = np.array([-m.sqrt(3)/2, -0.5]) * a
+mic3 = np.array([m.sqrt(3)/2, -0.5]) * a
+
+fs = 31250
+c = 343
+
+#3,-2,-5
+tau = np.array([-5,0,1]) / fs
+
+print(tau)
+#tau = 1e-3*np.array([0.386367 , -0.087589 , -0.473957])
 
 print(np.shape(tau))
 
