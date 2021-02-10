@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.signal as signal
+import math as m
 
 v_ref = 3.3
 
@@ -8,6 +9,21 @@ resolution = 2**12
 
 hpCutoff_freq = 100
 lpCutoff_freq = 10000
+
+corrLen = 10
+upsampleFac = 4
+
+a = 0.035
+
+mic1 = np.array([0, 1]) * a
+mic2 = np.array([-m.sqrt(3)/2, -0.5]) * a
+mic3 = np.array([m.sqrt(3)/2, -0.5]) * a
+
+upsampleFac = 4
+
+fs = 31250 * upsampleFac
+
+c = 343
 
 
 def raspi_import(path, channels=5):
@@ -21,8 +37,12 @@ def raspi_import(path, channels=5):
         sample_period = np.fromfile(fid, count=1, dtype=float)[0]
         data = np.fromfile(fid, dtype=np.uint16)
         data = data.reshape((-1, channels))
+        # Remove garbage signals
+        data = data[int(len(data) / 2):]
         data = data.T
-    return sample_period, data
+        data = [signal.resample(d, len(d) * upsampleFac) for d in data]
+        sample_period /= upsampleFac
+    return sample_period, np.array(data)
 
 
 def butter_coeff(cutoff, fs, fType, order=6):
@@ -36,9 +56,34 @@ def butter_filter(dataPoints, cutoff, fs, fType, order=6):
     return signal.filtfilt(b, a, dataPoints)
 
 
+def FindLagAndCorr(data1, data2):
+    corr = np.correlate(data1[corrLen * upsampleFac:-corrLen * upsampleFac], data2, mode="valid")
+    lagAxis = np.linspace(int(-len(corr) / 2), int(len(corr) / 2), num=len(corr))
+    l = int(lagAxis[np.where(corr == max(corr))])
+    return corr, lagAxis, l
+
+
+def micVector(fromMic, toMic):
+  return [fromMic[0] - toMic[0], fromMic[1] - toMic[1]]
+
+
+def FindAngle(tau):
+    micMatrix = np.array([micVector(mic2, mic1), micVector(mic3, mic1), micVector(mic3, mic2)])
+
+    inverseMicMatrix = np.linalg.pinv(micMatrix)
+
+    Xvec = (-c * (inverseMicMatrix @ tau))
+
+    print(Xvec)
+    correction = 0
+    if Xvec[0] < 0:
+        correction = 180
+
+    return (np.arctan(Xvec[1]/Xvec[0]) * 180 / m.pi ) + correction
+
 
 # Import data from bin file
-sample_period, data = raspi_import('./adcData.bin')
+sample_period, data = raspi_import('./adcData0.bin')
 
 sample_freq = 1 / (sample_period * 1e-6)
 
@@ -48,10 +93,12 @@ sample_freq = 1 / (sample_period * 1e-6)
 sample_period *= 1e-6  # change unit to micro seconds
 data = data * (v_ref / resolution) # Change to volts from mV
 
+
 #print(data)
 
 data = butter_filter(data, hpCutoff_freq, sample_freq, 'high', 6)
-data = butter_filter(data, lpCutoff_freq, sample_freq, 'low', 6)
+#data = butter_filter(data, lpCutoff_freq, sample_freq, 'low', 6)
+
 
 # Generate time axis
 num_of_samples = data.shape[1]  # returns shape of matrix
@@ -61,31 +108,28 @@ t = np.linspace(start=0, stop=num_of_samples*sample_period, num=num_of_samples)
 freq = np.fft.fftfreq(n=num_of_samples, d=sample_period)
 spectrum = np.fft.fft(data)[:3] # takes FFT of all channels
 
-# Lag from mic 2 to mic 1
-xcorr21 = np.correlate(data[1][int(len(data[1])/2):], data[0][int(len(data[0])/2):], mode='full')
-# Lag from mic 3 to mic 1
-xcorr31 = np.correlate(data[2][int(len(data[2])/2):], data[0][int(len(data[0])/2):], mode='full')
-# Lag from mic 3 to mic 2
-xcorr32 = np.correlate(data[2][int(len(data[2])/2):], data[1][int(len(data[1])/2):], mode='full')
 
 
-lagAxis = np.linspace(-len(xcorr21) / 2, len(xcorr21) / 2, num=len(xcorr21))
+xcorr21, axis21, l21 = FindLagAndCorr(data[1], data[0])
+xcorr31, axis31, l31 = FindLagAndCorr(data[2], data[0])
+xcorr32, axis32, l32 = FindLagAndCorr(data[2], data[1])
+acorr, aaxis, la = FindLagAndCorr(data[0], data[0])
 
-print(xcorr21)
 
-l21 = int(lagAxis[np.where(xcorr21 == max(xcorr21))[0]])
-l31 = int(lagAxis[np.where(xcorr31 == max(xcorr31))[0]])
-l32 = int(lagAxis[np.where(xcorr32 == max(xcorr32))[0]])
 
-print(f"{l21}, {l31}, {l32}")
+print(f"{l21}, {l31}, {l32}, auto: {la}")
+
+print(FindAngle([l21, l31, l32]))
 
 plt.figure("Correlation")
-plt.subplot(3,1,1)
-plt.stem(lagAxis, xcorr21)
-plt.subplot(3,1,2)
-plt.stem(lagAxis, xcorr31) 
-plt.subplot(3,1,3)
-plt.stem(lagAxis, xcorr32)
+plt.subplot(4,1,1)
+plt.stem(axis21, xcorr21)
+plt.subplot(4,1,2)
+plt.stem(axis31, xcorr31) 
+plt.subplot(4,1,3)
+plt.stem(axis32, xcorr32)
+plt.subplot(4,1,4)
+plt.stem(aaxis, acorr)
 
 #plt.show()
 
