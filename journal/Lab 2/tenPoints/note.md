@@ -1,0 +1,1 @@
+Målingene er ikke gjort i samme plan
