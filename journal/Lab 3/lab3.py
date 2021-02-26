@@ -9,14 +9,9 @@ v_ref = 3.3
 
 resolution = 2**12
 
-maxSpeed = 10
+maxSpeed = 5
 
 lpCutoff_freq = 160*maxSpeed
-
-
-fs = 31250
-
-c = 343
 
 
 def raspi_import(path, channels=5):
@@ -62,7 +57,9 @@ def butter_filter(dataPoints, cutoffFreq, sampleFreq, filterType='high', order=6
     b, a = butter_coeff(cutoffFreq, sampleFreq, filterType, order=order)
     return signal.filtfilt(b, a, dataPoints)
 
-
+def AddWindow(data, window="hamming"):
+    return data * signal.get_window(window, data.shape[1])
+    
 
 
 def Calculate(filename):
@@ -80,6 +77,7 @@ def Calculate(filename):
     #data = butter_filter(data, hpCutoff_freq, sample_freq)
     data = butter_filter(data, lpCutoff_freq, sample_freq, 'low')
 
+    data = AddWindow(data)
     
     # Generate time axis
     num_of_samples = data.shape[1]  # returns shape of matrix
@@ -87,7 +85,7 @@ def Calculate(filename):
 
     # Generate frequency axis and take FFT
     freq = np.fft.fftfreq(n=num_of_samples, d=sample_period)
-    spectrum = np.fft.fft(data) # takes FFT channels 1 and 2
+    spectrum = np.fft.fft(data[0] + 1j*data[1]) # takes FFT channels 1 and 2
 
     # Plot the results in two subplots
     # NOTICE: This lazily plots the entire matrixes. All the channels will be put into the same plots.
