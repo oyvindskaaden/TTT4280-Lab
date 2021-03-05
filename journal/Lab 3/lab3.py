@@ -9,7 +9,7 @@ v_ref = 3.3
 
 resolution = 2**12
 
-maxSpeed = 5
+maxSpeed = 3
 
 lpCutoff_freq = 160*maxSpeed
 
@@ -31,7 +31,7 @@ def raspi_import(path, channels=5):
         data = data.T
         # Scale sample period
         sample_period *= 1e-6
-        print(data)
+        #print(data)
     return sample_period, np.array(data)
 
 
@@ -87,6 +87,15 @@ def Calculate(filename):
     freq = np.fft.fftfreq(n=num_of_samples, d=sample_period)
     spectrum = np.fft.fft(data[0] + 1j*data[1]) # takes FFT channels 1 and 2
 
+    dopplershift = freq[np.abs(spectrum).argmax()] #int(freq[np.where(spectrum == max(spectrum))])
+    print(f"Dopplershift is : {dopplershift} and the velocity is {dopplershift/160}")
+
+    
+
+    return [dopplershift/160, t, data, freq, spectrum]
+
+
+def Plot(t, data, freq, spectrum):
     # Plot the results in two subplots
     # NOTICE: This lazily plots the entire matrixes. All the channels will be put into the same plots.
     # If you want a single channel, use data[n-1] to get channel n
@@ -107,8 +116,23 @@ def Calculate(filename):
 
     plt.show()
 
-    return
+
+def MakeResult(name="Fwd"):
+    values = []
+
+    for i in range(1,6):
+        values.append(Calculate(f"./dopplerData/{i}{name}.bin")[0])
+
+    meassureMean = np.mean(values)
+    meassureStd = np.std(values)
+
+    print(f"{name} -> Mean is: {meassureMean} [m/s] and std is: {meassureStd}")
+
+yeet = Calculate("./dopplerData/1Fwd.bin")[1:]
 
 
-Calculate("./dopplerData/adcData.bin")
+MakeResult()
+MakeResult("Bcw")
 
+
+Plot(yeet[0], yeet[1], yeet[2], yeet[3])
