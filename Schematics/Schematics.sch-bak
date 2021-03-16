@@ -190,7 +190,7 @@ Wire Wire Line
 	10200 1450 10200 1550
 Wire Notes Line
 	8300 450  8300 1900
-Text Notes 10200 700  2    98   ~ 0
+Text Notes 10500 700  2    118  ~ 0
 Pi bridge (DC LP filter)
 Text GLabel 1100 4350 0    50   Input ~ 0
 ADC1
