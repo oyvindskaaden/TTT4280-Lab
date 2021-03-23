@@ -99,7 +99,30 @@ def Calculate(filename):
     # ...........,..,*,,,,,,,,,,,,,,,,,,,,&@@@@@/***%@@@@@@@/,............................*//*,,,.   . .  
     # ........,,,,,,,,,,,,,,,,//,,,,,,,,,*@@@@&*/***,@@@@@&#..............................*/*,,,.   . .  
     # .....,,,,,,,,,,,,......,*,*,,,,,,,,,,/@@@#/*.,/*&(@@@#,...............,...............*/,,,.   . .. 
-    # Modern problems require modern solutions
+    #  __  __           _                 
+    # |  \/  | ___   __| | ___ _ __ _ __  
+    # | |\/| |/ _ \ / _` |/ _ \ '__| '_ \ 
+    # | |  | | (_) | (_| |  __/ |  | | | |
+    # |_|  |_|\___/ \__,_|\___|_|  |_| |_|
+                                        
+    #                 _     _                                           _          
+    # _ __  _ __ ___ | |__ | | ___ _ __ ___  ___   _ __ ___  __ _ _   _(_)_ __ ___ 
+    # | '_ \| '__/ _ \| '_ \| |/ _ \ '_ ` _ \/ __| | '__/ _ \/ _` | | | | | '__/ _ \
+    # | |_) | | | (_) | |_) | |  __/ | | | | \__ \ | | |  __/ (_| | |_| | | | |  __/
+    # | .__/|_|  \___/|_.__/|_|\___|_| |_| |_|___/ |_|  \___|\__, |\__,_|_|_|  \___|
+    # |_|                                                       |_|                 
+    #                     _                 
+    # _ __ ___   ___   __| | ___ _ __ _ __  
+    # | '_ ` _ \ / _ \ / _` |/ _ \ '__| '_ \ 
+    # | | | | | | (_) | (_| |  __/ |  | | | |
+    # |_| |_| |_|\___/ \__,_|\___|_|  |_| |_|
+                                        
+    #         _       _   _                 
+    # ___  ___ | |_   _| |_(_) ___  _ __  ___ 
+    # / __|/ _ \| | | | | __| |/ _ \| '_ \/ __|
+    # \__ \ (_) | | |_| | |_| | (_) | | | \__ \
+    # |___/\___/|_|\__,_|\__|_|\___/|_| |_|___/
+                                            
 
     bpm = []
     for spec in spectrum:
@@ -134,18 +157,23 @@ def Plot(t, data, freq, spectrum):
     plt.show()
 
 
+def MeanAndStd(meassure, count):
+    bpm = []
+    for i in range(1,count + 1):
+        bpm.append(Calculate(f"./data/{meassure}{i}")[4])
+        print(f"{meassure}{i} is {bpm[-1]}")
 
-bpm = []
-for i in range(1,6):
-    bpm.append(Calculate(f"./data/direkte{i}")[4])
-    print(f"direkte{i} is {bpm[-1]}")
+    bpm = np.array(bpm).T
 
-bpm = np.array(bpm).T
-
-print(f"Mean for 'direkte' is:")
-for i, c in enumerate(["Red", "Green", "Blue"]):
-    print(f"{c}: \t Mean: {np.mean(bpm[i])} BPM, and the std is: {np.std(bpm[i])} BPM")
+    print(f"Mean for '{meassure}' is:")
+    for i, c in enumerate(["Red", "Green", "Blue"]):
+        print(f"{c}: \t Mean: {np.mean(bpm[i])} BPM, and the std is: {np.std(bpm[i])} BPM")
 
 
-pD = Calculate(f"./data/{sys.argv[1]}")
-Plot(pD[0], pD[1], pD[2], pD[3])
+MeanAndStd("direkte", 5)
+MeanAndStd("trans", 5)
+
+if len(sys.argv) > 1:
+    pD = Calculate(f"./data/{sys.argv[1]}")
+    print(pD[4])
+    Plot(pD[0], pD[1], pD[2], pD[3])
