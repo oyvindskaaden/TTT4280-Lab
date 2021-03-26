@@ -47,7 +47,8 @@ def butter_filter(dataPoints, cutoffFreq, sampleFreq, filterType='high', order=6
 
 def AddWindow(data, window="hamming"):
     return data * signal.get_window(window, data.shape[1])
-    
+
+   
 
 
 def Calculate(filename):
@@ -125,10 +126,14 @@ def Calculate(filename):
                                             
 
     bpm = []
+    snr = []
+    #print(spectrum[0][np.where((freq >= 3) & (freq < 4))])
     for spec in spectrum:
         bpm.append(abs(freq[np.abs(spec).argmax()])*60)
+        #snr.append(20*np.log(abs(np.abs(spec).max())/np.mean(np.abs(spec[:int(len(freq)/8)]))))
+        snr.append(20*np.log(abs(np.abs(spec).max())/np.mean(np.abs(spec[np.where((freq >= 3) & (freq < 4))]))))
 
-    return [t, data, freq, spectrum, bpm]
+    return [t, data, freq, spectrum, bpm, snr]
 
 
 def Plot(t, data, freq, spectrum):
@@ -158,6 +163,7 @@ def Plot(t, data, freq, spectrum):
 
 
 def MeanAndStd(meassure, count):
+    print(f"\n=== {meassure} ===")
     bpm = []
     for i in range(1,count + 1):
         bpm.append(Calculate(f"./data/{meassure}{i}")[4])
@@ -175,5 +181,6 @@ MeanAndStd("trans", 5)
 
 if len(sys.argv) > 1:
     pD = Calculate(f"./data/{sys.argv[1]}")
-    print(pD[4])
+    #print(pD[4])
+    print(pD[5])
     Plot(pD[0], pD[1], pD[2], pD[3])
