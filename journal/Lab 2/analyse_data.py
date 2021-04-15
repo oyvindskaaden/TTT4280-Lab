@@ -27,97 +27,80 @@ c = 343
 
 
 def raspi_import(path, channels=5):
-    """
-    Import data produced using adc_sampler.c.
-    Returns sample period and ndarray with one column per channel.
-    Sampled data for each channel, in dimensions NUM_SAMPLES x NUM_CHANNELS.
-    """
+  """
+  Import data produced using adc_sampler.c.
+  Returns sample period and ndarray with one column per channel.
+  Sampled data for each channel, in dimensions NUM_SAMPLES x NUM_CHANNELS.
+  """
 
-    with open(path, 'r') as fid:
-        sample_period = np.fromfile(fid, count=1, dtype=float)[0]
-        data = np.fromfile(fid, dtype=np.uint16)
-        data = data.reshape((-1, channels))
-        # Remove garbage signals
-        data = data[int(len(data) / 2):]
-        data = data.T
-        data = [signal.resample(d, len(d) * upsampleFac) for d in data]
-        sample_period /= upsampleFac
-        sample_period *= 1e-6
-    return sample_period, np.array(data)
+  with open(path, 'r') as fid:
+    sample_period = np.fromfile(fid, count=1, dtype=float)[0]
+    data = np.fromfile(fid, dtype=np.uint16)
+    data = data.reshape((-1, channels))
+    # Remove garbage signals
+    data = data[int(len(data) / 2):]
+    data = data.T
+    data = [signal.resample(d, len(d) * upsampleFac) for d in data]
+    sample_period /= upsampleFac
+    sample_period *= 1e-6
+  return sample_period, np.array(data)
 
 
 def butter_coeff(cutoff, fs, fType, order=6):
-    nyq = 0.5 * fs
-    normal_cutoff = cutoff / nyq
-    return signal.butter(order, normal_cutoff, btype=fType, analog=False)
+  nyq = 0.5 * fs
+  normal_cutoff = cutoff / nyq
+  return signal.butter(order, normal_cutoff, btype=fType, analog=False)
 
 
 def butter_filter(dataPoints, cutoff, fs, fType, order=6):
-    b, a = butter_coeff(cutoff, fs, fType, order=order)
-    return signal.filtfilt(b, a, dataPoints)
+  b, a = butter_coeff(cutoff, fs, fType, order=order)
+  return signal.filtfilt(b, a, dataPoints)
 
 
 def FindLagAndCorr(data1, data2):
-    corr = np.correlate(data1[corrLen * upsampleFac:-corrLen * upsampleFac], data2, mode="valid")
-    lagAxis = np.linspace(int(-len(corr) / 2), int(len(corr) / 2), num=len(corr))
-    l = int(lagAxis[np.where(corr == max(corr))])
-    return corr, lagAxis, l
+  corr = np.correlate(data1[corrLen * upsampleFac:-corrLen * upsampleFac], data2, mode="valid")
+  lagAxis = np.linspace(int(-len(corr) / 2), int(len(corr) / 2), num=len(corr))
+  l = int(lagAxis[np.where(corr == max(corr))])
+  return corr, lagAxis, l
 
 
 def micVector(fromMic, toMic):
-  return [fromMic[0] - toMic[0], fromMic[1] - toMic[1]]
+  return fromMic - toMic
 
 
 def FindAngle(tau):
-    micMatrix = np.array([micVector(mic2, mic1), micVector(mic3, mic1), micVector(mic3, mic2)])
+  micMatrix = np.array([mic2 - mic1, mic3 - mic1, mic3 - mic2])
 
-    inverseMicMatrix = np.linalg.pinv(micMatrix)
+  x_vec = (-c * (np.linalg.pinv(micMatrix) @ tau))
 
-    Xvec = (-c * (inverseMicMatrix @ tau))
-
-    correction = 0
-    if Xvec[0] < 0:
-        correction = 180
-
-    return (np.arctan(Xvec[1]/Xvec[0]) * 180 / m.pi ) + correction
+  return np.angle(x_vec[0] + x_vec[1]*1j, deg=True)  #(np.arctan(Xvec[1]/Xvec[0]) * 180 / m.pi ) + correction
 
 
 def Calculate(filename):
-    # Import data from bin file
-    sample_period, data = raspi_import(filename)
+  # Import data from bin file
+  sample_period, data = raspi_import(filename)
 
-    sample_freq = 1 / sample_period
-
-
-    sample_period *= 1e-6  # change unit to micro seconds
-    data = data * (v_ref / resolution) # Change to volts from mV
+  sample_freq = 1 / sample_period
 
 
+  #sample_period *= 1e-6  # change unit to micro seconds
+  data = data * (v_ref / resolution) # Change to volts from mV
 
-    data = butter_filter(data, hpCutoff_freq, sample_freq, 'high', 6)
-    #data = butter_filter(data, lpCutoff_freq, sample_freq, 'low', 6)
 
-    """
-    # Generate time axis
-    num_of_samples = data.shape[1]  # returns shape of matrix
-    t = np.linspace(start=0, stop=num_of_samples*sample_period, num=num_of_samples)
+  data = butter_filter(data, hpCutoff_freq, sample_freq, 'high', 6)
+  #data = butter_filter(data, lpCutoff_freq, sample_freq, 'low', 6)
 
-    # Generate frequency axis and take FFT
-    freq = np.fft.fftfreq(n=num_of_samples, d=sample_period)
-    spectrum = np.fft.fft(data)[:3] # takes FFT of all channels
 
-    """
-
-    xcorr21, axis21, l21 = FindLagAndCorr(data[1], data[0])
-    xcorr31, axis31, l31 = FindLagAndCorr(data[2], data[0])
-    xcorr32, axis32, l32 = FindLagAndCorr(data[2], data[1])
-    acorr, aaxis, la = FindLagAndCorr(data[0], data[0])
+  xcorr21, axis21, l21 = FindLagAndCorr(data[1], data[0])
+  xcorr31, axis31, l31 = FindLagAndCorr(data[2], data[0])
+  xcorr32, axis32, l32 = FindLagAndCorr(data[2], data[1])
+  acorr, aaxis, la = FindLagAndCorr(data[0], data[0])
 
 
 
-    #print(f"{l21}, {l31}, {l32}, auto: {la}")
+  #print(f"{l21}, {l31}, {l32}, auto: {la}")
 
-    return FindAngle([l21, l31, l32])
+  return FindAngle([l21, l31, l32])
 
 
 for d in [10, 90, 170, 270]:
@@ -129,13 +112,23 @@ for d in [10, 90, 170, 270]:
   mean = np.mean(results)
   s = np.std(results)
 
-  print(f"Angle: {d}, mean of measure: {mean}, std of measure: {s}")
+  print(f"Angle: {d}, mean of measures: {mean}, std of measures: {s}")
 
 for n in range(10):
   result = Calculate(f"./tenPoints/{n}.bin")
   print(f"Angle {n}: {result}")
   
 
+"""
+# Generate time axis
+num_of_samples = data.shape[1]  # returns shape of matrix
+t = np.linspace(start=0, stop=num_of_samples*sample_period, num=num_of_samples)
+
+# Generate frequency axis and take FFT
+freq = np.fft.fftfreq(n=num_of_samples, d=sample_period)
+spectrum = np.fft.fft(data)[:3] # takes FFT of all channels
+
+"""
 
 """
 plt.figure("Correlation")
