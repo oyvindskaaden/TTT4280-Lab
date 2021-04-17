@@ -114,9 +114,19 @@ for d in [10, 90, 170, 270]:
 
   print(f"Angle: {d}, mean of measures: {mean}, std of measures: {s}")
 
-for n in range(10):
-  result = Calculate(f"./tenPoints/{n}.bin")
-  print(f"Angle {n}: {result}")
+for file in ["000","036", "072","108","144","180","216","252","288","324"]:
+  results = []
+  for n in range(10):
+    results.append(Calculate(f"./tenAngles/{file}/{n}.bin"))
+    
+    #print(f"Angle {n}: {result}")
+  mean = np.mean(results)
+  s = np.std(results)
+
+  if mean < 0:
+    mean += 360
+
+  print(f"Angle: {file}, mean of measures: {mean}, std of measures: {s}")
   
 
 """
