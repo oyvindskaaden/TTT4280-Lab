@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name Schematics-rescue)(type Legacy)(uri ${KIPRJMOD}/Schematics-rescue.lib)(options "")(descr ""))
+  (lib (name TTT4280)(type Legacy)(uri ${KIPRJMOD}/TTT4280.lib)(options "")(descr ""))
+)

@@ -1,0 +1,770 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "TTT4280 - Lab Schematics"
+Date "2021-02-23"
+Rev "3"
+Comp "NTNU"
+Comment1 "Authors: Øyvind Skaaden & Sondre Hatlehol"
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text GLabel 3400 5100 2    50   Input ~ 0
+3V3_Clean
+$Comp
+L power:+3V3 #PWR026
+U 1 1 600FF1FF
+P 1450 5100
+F 0 "#PWR026" H 1450 4950 50  0001 C CNN
+F 1 "+3V3" H 1465 5273 50  0000 C CNN
+F 2 "" H 1450 5100 50  0001 C CNN
+F 3 "" H 1450 5100 50  0001 C CNN
+	1    1450 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:L L1
+U 1 1 60104E20
+P 2050 5100
+F 0 "L1" V 2240 5100 50  0000 C CNN
+F 1 "100m" V 2149 5100 50  0000 C CNN
+F 2 "" H 2050 5100 50  0001 C CNN
+F 3 "~" H 2050 5100 50  0001 C CNN
+	1    2050 5100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3000 5100 3000 5200
+Wire Wire Line
+	3000 5100 3400 5100
+Connection ~ 3000 5100
+$Comp
+L power:GND #PWR027
+U 1 1 6010BFF4
+P 1650 5600
+F 0 "#PWR027" H 1650 5350 50  0001 C CNN
+F 1 "GND" H 1655 5427 50  0000 C CNN
+F 2 "" H 1650 5600 50  0001 C CNN
+F 3 "" H 1650 5600 50  0001 C CNN
+	1    1650 5600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR032
+U 1 1 6010C4E7
+P 2450 5600
+F 0 "#PWR032" H 2450 5350 50  0001 C CNN
+F 1 "GND" H 2455 5427 50  0000 C CNN
+F 2 "" H 2450 5600 50  0001 C CNN
+F 3 "" H 2450 5600 50  0001 C CNN
+	1    2450 5600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR035
+U 1 1 6010C75D
+P 3000 5600
+F 0 "#PWR035" H 3000 5350 50  0001 C CNN
+F 1 "GND" H 3005 5427 50  0000 C CNN
+F 2 "" H 3000 5600 50  0001 C CNN
+F 3 "" H 3000 5600 50  0001 C CNN
+	1    3000 5600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3000 5500 3000 5600
+Text Notes 3300 4750 2    118  ~ 0
+Pi bridge (DC LP filter)
+Wire Wire Line
+	3500 1700 4700 1700
+Wire Wire Line
+	3500 1600 4700 1600
+Text GLabel 4700 1700 2    50   Input ~ 0
+CS
+Text GLabel 4700 1600 2    50   Input ~ 0
+CLK
+Wire Wire Line
+	3500 3200 4700 3200
+Wire Wire Line
+	3500 3100 4700 3100
+Wire Wire Line
+	3500 3000 4700 3000
+Wire Wire Line
+	3500 2800 4700 2800
+Wire Wire Line
+	3500 2500 4700 2500
+Text GLabel 4700 3200 2    50   Input ~ 0
+ADC5
+Text GLabel 4700 3100 2    50   Input ~ 0
+ADC4
+Text GLabel 4700 3000 2    50   Input ~ 0
+ADC3
+Text GLabel 4700 2800 2    50   Input ~ 0
+ADC2
+Text GLabel 4700 2500 2    50   Input ~ 0
+ADC1
+Wire Wire Line
+	3000 2600 1850 2600
+Wire Wire Line
+	1850 2700 3000 2700
+Wire Wire Line
+	1850 2800 3000 2800
+Wire Wire Line
+	3000 2900 1850 2900
+Wire Wire Line
+	1850 3000 3000 3000
+Wire Wire Line
+	1850 3100 3000 3100
+Text Label 1850 2600 0    50   ~ 0
+ID_SD
+Text Label 1850 2700 0    50   ~ 0
+GPIO5
+Text Label 1850 2800 0    50   ~ 0
+GPIO6
+Text Label 1850 2900 0    50   ~ 0
+GPIO13(PWM1)
+Text Label 1850 3000 0    50   ~ 0
+GPIO19(SPI1_MISO)
+Text Label 1850 3100 0    50   ~ 0
+GPIO26
+Wire Wire Line
+	3600 1900 3600 2200
+Wire Wire Line
+	2900 2500 2900 3200
+Wire Wire Line
+	2800 1300 2800 2100
+Wire Wire Line
+	2900 3200 2900 3350
+Wire Wire Line
+	3600 2200 3600 2700
+Wire Wire Line
+	3600 2700 3600 2900
+Wire Wire Line
+	3600 2900 3600 3350
+Wire Wire Line
+	3700 1300 3700 1400
+Text Label 4550 3200 2    50   ~ 0
+GPIO21(SPI1_SCK)
+$Comp
+L Connector_Generic:Conn_02x20_Odd_Even P1
+U 1 1 59AD464A
+P 3200 2200
+F 0 "P1" H 3250 3317 50  0000 C CNN
+F 1 "Conn_02x20_Odd_Even" H 3250 3226 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_2x20_P2.54mm_Vertical" H -1650 1250 50  0001 C CNN
+F 3 "" H -1650 1250 50  0001 C CNN
+	1    3200 2200
+	1    0    0    -1  
+$EndComp
+Connection ~ 3600 1900
+Wire Wire Line
+	3600 1500 3500 1500
+Text Label 4550 1600 2    50   ~ 0
+GPIO14(TXD0)
+Text Label 4550 1700 2    50   ~ 0
+GPIO15(RXD0)
+Text Label 4550 1800 2    50   ~ 0
+GPIO18(GEN1)(PWM0)
+Text Label 4550 2000 2    50   ~ 0
+GPIO23(GEN4)
+Text Label 4550 2100 2    50   ~ 0
+GPIO24(GEN5)
+Text Label 4550 2300 2    50   ~ 0
+GPIO25(GEN6)
+Text Label 4550 2400 2    50   ~ 0
+GPIO8(SPI0_CE_N)
+Text Label 4550 2500 2    50   ~ 0
+GPIO7(SPI1_CE_N)
+Text Label 4550 2600 2    50   ~ 0
+ID_SC
+Text Label 4550 2800 2    50   ~ 0
+GPIO12(PWM0)
+Text Label 4550 3000 2    50   ~ 0
+GPIO16
+Text Label 4550 3100 2    50   ~ 0
+GPIO20(SPI1_MOSI)
+Text Label 1850 2400 0    50   ~ 0
+GPIO11(SPI0_SCK)
+Text Label 1850 2300 0    50   ~ 0
+GPIO9(SPI0_MISO)
+Text Label 1850 2200 0    50   ~ 0
+GPIO10(SPI0_MOSI)
+Text Label 1850 2000 0    50   ~ 0
+GPIO22(GEN3)
+Text Label 1850 1900 0    50   ~ 0
+GPIO27(GEN2)
+Text Label 1850 1800 0    50   ~ 0
+GPIO17(GEN0)
+Text Label 1850 1600 0    50   ~ 0
+GPIO4(GCLK)
+Text Label 1850 1500 0    50   ~ 0
+GPIO3(SCL1)
+Text Label 1850 1400 0    50   ~ 0
+GPIO2(SDA1)
+Wire Wire Line
+	3500 1800 4550 1800
+Wire Wire Line
+	3500 2100 4550 2100
+Wire Wire Line
+	3500 2000 4550 2000
+Wire Wire Line
+	3500 2400 4550 2400
+Wire Wire Line
+	3500 2300 4550 2300
+Wire Wire Line
+	3500 2600 4550 2600
+Wire Wire Line
+	1850 2400 3000 2400
+Wire Wire Line
+	1850 2300 3000 2300
+Wire Wire Line
+	3000 2200 1850 2200
+Wire Wire Line
+	1850 2000 3000 2000
+Wire Wire Line
+	1850 1900 3000 1900
+Wire Wire Line
+	3000 1800 1850 1800
+Wire Wire Line
+	1850 1600 3000 1600
+Wire Wire Line
+	1850 1500 3000 1500
+Wire Wire Line
+	3000 1400 1850 1400
+Connection ~ 2900 2500
+Wire Wire Line
+	2900 1700 3000 1700
+$Comp
+L power:+3.3V #PWR04
+U 1 1 580C1BC1
+P 2800 1150
+F 0 "#PWR04" H 2800 1000 50  0001 C CNN
+F 1 "+3.3V" H 2800 1290 50  0000 C CNN
+F 2 "" H 2800 1150 50  0000 C CNN
+F 3 "" H 2800 1150 50  0000 C CNN
+	1    2800 1150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2800 1150 2800 1300
+Wire Wire Line
+	2800 1300 3000 1300
+Wire Wire Line
+	2800 2100 3000 2100
+Connection ~ 2800 1300
+Connection ~ 2900 3200
+Wire Wire Line
+	2900 2500 3000 2500
+Wire Wire Line
+	2900 1700 2900 2500
+Wire Wire Line
+	2900 3200 3000 3200
+$Comp
+L power:GND #PWR05
+U 1 1 580C1E01
+P 2900 3350
+F 0 "#PWR05" H 2900 3100 50  0001 C CNN
+F 1 "GND" H 2900 3200 50  0000 C CNN
+F 2 "" H 2900 3350 50  0000 C CNN
+F 3 "" H 2900 3350 50  0000 C CNN
+	1    2900 3350
+	1    0    0    -1  
+$EndComp
+Connection ~ 3600 2200
+Wire Wire Line
+	3600 1900 3500 1900
+Connection ~ 3600 2700
+Wire Wire Line
+	3600 2200 3500 2200
+Connection ~ 3600 2900
+Wire Wire Line
+	3600 2700 3500 2700
+Wire Wire Line
+	3600 2900 3500 2900
+Wire Wire Line
+	3600 1500 3600 1900
+$Comp
+L power:GND #PWR06
+U 1 1 580C1D11
+P 3600 3350
+F 0 "#PWR06" H 3600 3100 50  0001 C CNN
+F 1 "GND" H 3600 3200 50  0000 C CNN
+F 2 "" H 3600 3350 50  0000 C CNN
+F 3 "" H 3600 3350 50  0000 C CNN
+	1    3600 3350
+	1    0    0    -1  
+$EndComp
+Connection ~ 3700 1300
+Wire Wire Line
+	3700 1400 3500 1400
+Wire Wire Line
+	3700 1300 3500 1300
+Wire Wire Line
+	3700 1150 3700 1300
+$Comp
+L power:+5V #PWR07
+U 1 1 580C1B61
+P 3700 1150
+F 0 "#PWR07" H 3700 1000 50  0001 C CNN
+F 1 "+5V" H 3700 1290 50  0000 C CNN
+F 2 "" H 3700 1150 50  0000 C CNN
+F 3 "" H 3700 1150 50  0000 C CNN
+	1    3700 1150
+	1    0    0    -1  
+$EndComp
+Text Notes 1150 900  0    118  ~ 0
+40 Pin rPi
+Text Notes 7050 6850 0    197  ~ 0
+Måleoppsett Akustikk
+$Comp
+L Device:C C17
+U 1 1 607D4401
+P 3000 5350
+F 0 "C17" H 3115 5396 50  0000 L CNN
+F 1 "100n" H 3115 5305 50  0000 L CNN
+F 2 "" H 3038 5200 50  0001 C CNN
+F 3 "~" H 3000 5350 50  0001 C CNN
+	1    3000 5350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1450 5100 1650 5100
+Wire Wire Line
+	2200 5100 2450 5100
+$Comp
+L Device:CP C13
+U 1 1 607FE992
+P 1650 5350
+F 0 "C13" H 1768 5396 50  0000 L CNN
+F 1 "100u" H 1768 5305 50  0000 L CNN
+F 2 "" H 1688 5200 50  0001 C CNN
+F 3 "~" H 1650 5350 50  0001 C CNN
+	1    1650 5350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP C14
+U 1 1 607FEF44
+P 2450 5350
+F 0 "C14" H 2568 5396 50  0000 L CNN
+F 1 "100u" H 2568 5305 50  0000 L CNN
+F 2 "" H 2488 5200 50  0001 C CNN
+F 3 "~" H 2450 5350 50  0001 C CNN
+	1    2450 5350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1650 5100 1650 5200
+Connection ~ 1650 5100
+Wire Wire Line
+	1650 5100 1900 5100
+Wire Wire Line
+	2450 5100 2450 5200
+Connection ~ 2450 5100
+Wire Wire Line
+	2450 5100 3000 5100
+Wire Wire Line
+	1650 5600 1650 5500
+Wire Wire Line
+	2450 5600 2450 5500
+$Comp
+L Analog_ADC:MCP3201 U1
+U 1 1 6080AAE0
+P 9050 2200
+F 0 "U1" H 9350 1850 50  0000 C CNN
+F 1 "MCP3201" H 9250 1950 50  0000 C CNN
+F 2 "" H 9800 1850 50  0001 C CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/21290D.pdf" H 9850 2100 50  0001 C CNN
+	1    9050 2200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Microphone MK1
+U 1 1 6080B2AE
+P 6600 2300
+F 0 "MK1" H 6470 2254 50  0000 R CNN
+F 1 "Microphone" H 6470 2345 50  0000 R CNN
+F 2 "" V 6600 2400 50  0001 C CNN
+F 3 "~" V 6600 2400 50  0001 C CNN
+	1    6600 2300
+	1    0    0    -1  
+$EndComp
+Text GLabel 9150 1400 0    50   Input ~ 0
+3V3_Clean
+$Comp
+L power:GND #PWR014
+U 1 1 6080BD41
+P 8950 2500
+F 0 "#PWR014" H 8950 2250 50  0001 C CNN
+F 1 "GND" H 8955 2327 50  0000 C CNN
+F 2 "" H 8950 2500 50  0001 C CNN
+F 3 "" H 8950 2500 50  0001 C CNN
+	1    8950 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR08
+U 1 1 6080C304
+P 8550 2300
+F 0 "#PWR08" H 8550 2050 50  0001 C CNN
+F 1 "GND" H 8555 2127 50  0000 C CNN
+F 2 "" H 8550 2300 50  0001 C CNN
+F 3 "" H 8550 2300 50  0001 C CNN
+	1    8550 2300
+	1    0    0    -1  
+$EndComp
+Text GLabel 9800 2300 2    50   Input ~ 0
+CS
+Text GLabel 9800 2200 2    50   Input ~ 0
+ADC1
+Text GLabel 9800 2100 2    50   Input ~ 0
+CLK
+Wire Wire Line
+	9800 2100 9550 2100
+Wire Wire Line
+	9550 2200 9800 2200
+Wire Wire Line
+	9800 2300 9550 2300
+$Comp
+L Device:CP C4
+U 1 1 608233DE
+P 9300 1750
+F 0 "C4" V 9555 1750 50  0000 C CNN
+F 1 "1u" V 9464 1750 50  0000 C CNN
+F 2 "" H 9338 1600 50  0001 C CNN
+F 3 "~" H 9300 1750 50  0001 C CNN
+	1    9300 1750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR011
+U 1 1 60846F83
+P 8650 1750
+F 0 "#PWR011" H 8650 1500 50  0001 C CNN
+F 1 "GND" H 8655 1577 50  0000 C CNN
+F 2 "" H 8650 1750 50  0001 C CNN
+F 3 "" H 8650 1750 50  0001 C CNN
+	1    8650 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR017
+U 1 1 608472DF
+P 9450 1750
+F 0 "#PWR017" H 9450 1500 50  0001 C CNN
+F 1 "GND" H 9455 1577 50  0000 C CNN
+F 2 "" H 9450 1750 50  0001 C CNN
+F 3 "" H 9450 1750 50  0001 C CNN
+	1    9450 1750
+	1    0    0    -1  
+$EndComp
+Connection ~ 9150 1750
+$Comp
+L Device:CP C1
+U 1 1 60823EBE
+P 8800 1750
+F 0 "C1" V 8550 1750 50  0000 C CNN
+F 1 "10u" V 8650 1750 50  0000 C CNN
+F 2 "" H 8838 1600 50  0001 C CNN
+F 3 "~" H 8800 1750 50  0001 C CNN
+	1    8800 1750
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9150 1400 9150 1600
+Wire Wire Line
+	9150 1750 9150 1900
+Wire Wire Line
+	8950 1750 8950 1900
+Wire Wire Line
+	8950 1750 8950 1600
+Wire Wire Line
+	8950 1600 9150 1600
+Connection ~ 8950 1750
+Connection ~ 9150 1600
+Wire Wire Line
+	9150 1600 9150 1750
+Wire Wire Line
+	6600 2100 8550 2100
+$Comp
+L power:GND #PWR01
+U 1 1 60887E72
+P 6600 2500
+F 0 "#PWR01" H 6600 2250 50  0001 C CNN
+F 1 "GND" H 6605 2327 50  0000 C CNN
+F 2 "" H 6600 2500 50  0001 C CNN
+F 3 "" H 6600 2500 50  0001 C CNN
+	1    6600 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Analog_ADC:MCP3201 U2
+U 1 1 60892DFE
+P 9050 3650
+F 0 "U2" H 9350 3300 50  0000 C CNN
+F 1 "MCP3201" H 9250 3400 50  0000 C CNN
+F 2 "" H 9800 3300 50  0001 C CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/21290D.pdf" H 9850 3550 50  0001 C CNN
+	1    9050 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Microphone MK2
+U 1 1 60892E04
+P 6600 3750
+F 0 "MK2" H 6470 3704 50  0000 R CNN
+F 1 "Microphone" H 6470 3795 50  0000 R CNN
+F 2 "" V 6600 3850 50  0001 C CNN
+F 3 "~" V 6600 3850 50  0001 C CNN
+	1    6600 3750
+	1    0    0    -1  
+$EndComp
+Text GLabel 9150 2850 0    50   Input ~ 0
+3V3_Clean
+$Comp
+L power:GND #PWR015
+U 1 1 60892E0B
+P 8950 3950
+F 0 "#PWR015" H 8950 3700 50  0001 C CNN
+F 1 "GND" H 8955 3777 50  0000 C CNN
+F 2 "" H 8950 3950 50  0001 C CNN
+F 3 "" H 8950 3950 50  0001 C CNN
+	1    8950 3950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR09
+U 1 1 60892E11
+P 8550 3750
+F 0 "#PWR09" H 8550 3500 50  0001 C CNN
+F 1 "GND" H 8555 3577 50  0000 C CNN
+F 2 "" H 8550 3750 50  0001 C CNN
+F 3 "" H 8550 3750 50  0001 C CNN
+	1    8550 3750
+	1    0    0    -1  
+$EndComp
+Text GLabel 9800 3750 2    50   Input ~ 0
+CS
+Text GLabel 9800 3650 2    50   Input ~ 0
+ADC2
+Text GLabel 9800 3550 2    50   Input ~ 0
+CLK
+Wire Wire Line
+	9800 3550 9550 3550
+Wire Wire Line
+	9550 3650 9800 3650
+Wire Wire Line
+	9800 3750 9550 3750
+$Comp
+L Device:CP C5
+U 1 1 60892E1D
+P 9300 3200
+F 0 "C5" V 9555 3200 50  0000 C CNN
+F 1 "1u" V 9464 3200 50  0000 C CNN
+F 2 "" H 9338 3050 50  0001 C CNN
+F 3 "~" H 9300 3200 50  0001 C CNN
+	1    9300 3200
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR012
+U 1 1 60892E23
+P 8650 3200
+F 0 "#PWR012" H 8650 2950 50  0001 C CNN
+F 1 "GND" H 8655 3027 50  0000 C CNN
+F 2 "" H 8650 3200 50  0001 C CNN
+F 3 "" H 8650 3200 50  0001 C CNN
+	1    8650 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR018
+U 1 1 60892E29
+P 9450 3200
+F 0 "#PWR018" H 9450 2950 50  0001 C CNN
+F 1 "GND" H 9455 3027 50  0000 C CNN
+F 2 "" H 9450 3200 50  0001 C CNN
+F 3 "" H 9450 3200 50  0001 C CNN
+	1    9450 3200
+	1    0    0    -1  
+$EndComp
+Connection ~ 9150 3200
+$Comp
+L Device:CP C2
+U 1 1 60892E30
+P 8800 3200
+F 0 "C2" V 8550 3200 50  0000 C CNN
+F 1 "10u" V 8650 3200 50  0000 C CNN
+F 2 "" H 8838 3050 50  0001 C CNN
+F 3 "~" H 8800 3200 50  0001 C CNN
+	1    8800 3200
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9150 2850 9150 3050
+Wire Wire Line
+	9150 3200 9150 3350
+Wire Wire Line
+	8950 3200 8950 3350
+Wire Wire Line
+	8950 3200 8950 3050
+Wire Wire Line
+	8950 3050 9150 3050
+Connection ~ 8950 3200
+Connection ~ 9150 3050
+Wire Wire Line
+	9150 3050 9150 3200
+Wire Wire Line
+	6600 3550 8550 3550
+$Comp
+L power:GND #PWR02
+U 1 1 60892E3F
+P 6600 3950
+F 0 "#PWR02" H 6600 3700 50  0001 C CNN
+F 1 "GND" H 6605 3777 50  0000 C CNN
+F 2 "" H 6600 3950 50  0001 C CNN
+F 3 "" H 6600 3950 50  0001 C CNN
+	1    6600 3950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Analog_ADC:MCP3201 U3
+U 1 1 6089EE6F
+P 9050 5100
+F 0 "U3" H 9350 4750 50  0000 C CNN
+F 1 "MCP3201" H 9250 4850 50  0000 C CNN
+F 2 "" H 9800 4750 50  0001 C CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/21290D.pdf" H 9850 5000 50  0001 C CNN
+	1    9050 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Microphone MK3
+U 1 1 6089EE75
+P 6600 5200
+F 0 "MK3" H 6470 5154 50  0000 R CNN
+F 1 "Microphone" H 6470 5245 50  0000 R CNN
+F 2 "" V 6600 5300 50  0001 C CNN
+F 3 "~" V 6600 5300 50  0001 C CNN
+	1    6600 5200
+	1    0    0    -1  
+$EndComp
+Text GLabel 9150 4300 0    50   Input ~ 0
+3V3_Clean
+$Comp
+L power:GND #PWR016
+U 1 1 6089EE7C
+P 8950 5400
+F 0 "#PWR016" H 8950 5150 50  0001 C CNN
+F 1 "GND" H 8955 5227 50  0000 C CNN
+F 2 "" H 8950 5400 50  0001 C CNN
+F 3 "" H 8950 5400 50  0001 C CNN
+	1    8950 5400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR010
+U 1 1 6089EE82
+P 8550 5200
+F 0 "#PWR010" H 8550 4950 50  0001 C CNN
+F 1 "GND" H 8555 5027 50  0000 C CNN
+F 2 "" H 8550 5200 50  0001 C CNN
+F 3 "" H 8550 5200 50  0001 C CNN
+	1    8550 5200
+	1    0    0    -1  
+$EndComp
+Text GLabel 9800 5200 2    50   Input ~ 0
+CS
+Text GLabel 9800 5100 2    50   Input ~ 0
+ADC3
+Text GLabel 9800 5000 2    50   Input ~ 0
+CLK
+Wire Wire Line
+	9800 5000 9550 5000
+Wire Wire Line
+	9550 5100 9800 5100
+Wire Wire Line
+	9800 5200 9550 5200
+$Comp
+L Device:CP C6
+U 1 1 6089EE8E
+P 9300 4650
+F 0 "C6" V 9555 4650 50  0000 C CNN
+F 1 "1u" V 9464 4650 50  0000 C CNN
+F 2 "" H 9338 4500 50  0001 C CNN
+F 3 "~" H 9300 4650 50  0001 C CNN
+	1    9300 4650
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR013
+U 1 1 6089EE94
+P 8650 4650
+F 0 "#PWR013" H 8650 4400 50  0001 C CNN
+F 1 "GND" H 8655 4477 50  0000 C CNN
+F 2 "" H 8650 4650 50  0001 C CNN
+F 3 "" H 8650 4650 50  0001 C CNN
+	1    8650 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR019
+U 1 1 6089EE9A
+P 9450 4650
+F 0 "#PWR019" H 9450 4400 50  0001 C CNN
+F 1 "GND" H 9455 4477 50  0000 C CNN
+F 2 "" H 9450 4650 50  0001 C CNN
+F 3 "" H 9450 4650 50  0001 C CNN
+	1    9450 4650
+	1    0    0    -1  
+$EndComp
+Connection ~ 9150 4650
+$Comp
+L Device:CP C3
+U 1 1 6089EEA1
+P 8800 4650
+F 0 "C3" V 8550 4650 50  0000 C CNN
+F 1 "10u" V 8650 4650 50  0000 C CNN
+F 2 "" H 8838 4500 50  0001 C CNN
+F 3 "~" H 8800 4650 50  0001 C CNN
+	1    8800 4650
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9150 4300 9150 4500
+Wire Wire Line
+	9150 4650 9150 4800
+Wire Wire Line
+	8950 4650 8950 4800
+Wire Wire Line
+	8950 4650 8950 4500
+Wire Wire Line
+	8950 4500 9150 4500
+Connection ~ 8950 4650
+Connection ~ 9150 4500
+Wire Wire Line
+	9150 4500 9150 4650
+Wire Wire Line
+	6600 5000 8550 5000
+$Comp
+L power:GND #PWR03
+U 1 1 6089EEB0
+P 6600 5400
+F 0 "#PWR03" H 6600 5150 50  0001 C CNN
+F 1 "GND" H 6605 5227 50  0000 C CNN
+F 2 "" H 6600 5400 50  0001 C CNN
+F 3 "" H 6600 5400 50  0001 C CNN
+	1    6600 5400
+	1    0    0    -1  
+$EndComp
+Text Notes 8050 900  2    118  ~ 0
+ADC og mikrofoner
+Wire Notes Line
+	500  3950 5650 3950
+Wire Notes Line
+	5650 500  5650 7750
+$EndSCHEMATC

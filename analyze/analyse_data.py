@@ -83,7 +83,7 @@ def FindAngle(tau):
 
 
 # Import data from bin file
-sample_period, data = raspi_import('./adcData0.bin')
+sample_period, data = raspi_import('./adcData14kOg15k.bin')
 
 sample_freq = 1 / (sample_period * 1e-6)
 
